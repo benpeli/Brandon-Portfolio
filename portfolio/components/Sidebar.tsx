@@ -9,7 +9,10 @@ const Sidebar: React.FC = () => {
   const [profileVisible, setProfileVisible] = useState(false);
 
   useEffect(() => {
-    // Listen for when the content container becomes visible
+    if (document.readyState === 'complete') {
+      setProfileVisible(true);
+    }
+
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if ((mutation.target as Element).classList.contains('visible')) {
@@ -20,16 +23,25 @@ const Sidebar: React.FC = () => {
 
     const contentContainer = document.querySelector('.content-container');
     if (contentContainer) {
+      if (contentContainer.classList.contains('visible')) {
+        setProfileVisible(true);
+      }
       observer.observe(contentContainer, { attributes: true, attributeFilter: ['class'] });
     }
 
-    return () => observer.disconnect();
+    const handleLoad = () => setProfileVisible(true);
+    window.addEventListener('load', handleLoad);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('load', handleLoad);
+    };
   }, []);
 
   const links = [
     {
       name: "Home",
-      href: "/",
+      href: "/home",
     },
     {
       name: "Projects",

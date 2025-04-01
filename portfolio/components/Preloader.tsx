@@ -9,28 +9,23 @@ const Preloader: React.FC = () => {
   const [moving, setMoving] = useState(false);
 
   useEffect(() => {
-    // Start morphing animation after 1.5 seconds
     const morphTimer = setTimeout(() => {
       setMorphing(true);
-    }, 1500);
+    }, 4000);
     
-    // Complete the loading after 2.5 seconds
     const loadingTimer = setTimeout(() => {
       setCompleted(true);
       
-      // Start moving the profile picture after a short delay
       setTimeout(() => {
         setMoving(true);
         
-        // After the profile picture moves, show the rest of the content
         setTimeout(() => {
           document.querySelector('.content-container')?.classList.add('visible');
           
-          // Finally fade out the preloader background
           setTimeout(() => {
             setLoading(false);
           }, 500);
-        }, 1000); // Wait for profile movement animation
+        }, 1000);
       }, 800);
     }, 2500);
 
