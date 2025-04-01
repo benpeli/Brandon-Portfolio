@@ -134,7 +134,7 @@ const Apps: React.FC = () => {
               </div>
               
               {hoveredLogo === idx && (
-                <div className="relative -bottom-3 text-gray-300 text-xs overline decoration-2 rounded text-center z-10">
+                <div className="relative -bottom-3 text-gray-300 text-xs overline decoration-1 rounded text-center z-10 pt-1">
                   <p>{app.description}</p>
                 </div>
               )}

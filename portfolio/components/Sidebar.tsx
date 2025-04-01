@@ -44,6 +44,10 @@ const Sidebar: React.FC = () => {
       href: "/home",
     },
     {
+      name: "Research",
+      href: "/research",
+    },
+    {
       name: "Projects",
       href: "/projects",
     },
@@ -67,10 +71,10 @@ const Sidebar: React.FC = () => {
           alt="Profile Picture" 
           width="150" 
           height="150"
-          className={`profileImage mb-2 ${profileVisible ? 'opacity-100' : 'opacity-0'}`}
+          className={`profileImage mb-3 ${profileVisible ? 'opacity-100' : 'opacity-0'}`}
         />
-        <h1 className="text-gray-200 font-bold">Brandon Yee</h1>
-        <p className="text-gray-200 mb-6">ML Researcher @ MIT</p>
+        <h1 className="name-title text-gray-200 font-bold">BRANDON YEE</h1>
+        <p className="title text-gray-200 mb-6">ML Researcher @ MIT</p>
       </div>
     
       <nav className="mt-6 flex-grow">

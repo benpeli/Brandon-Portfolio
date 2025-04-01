@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, IBM_Plex_Serif } from "next/font/google";
+import { Tajawal } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-latin'})
-const ibmplexserif = IBM_Plex_Serif({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-ibm-plex-serif'
+const tajawal = Tajawal({ 
+  subsets: ['latin'], 
+  weight: ['700', '800', '900'],
+  variable: '--font-latin'
 })
 
 export const metadata: Metadata = {
@@ -22,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${ibmplexserif.variable} antialiased`}
+        className={`${tajawal.className} ${tajawal.variable} antialiased`}
       >
         {children}
       </body>
