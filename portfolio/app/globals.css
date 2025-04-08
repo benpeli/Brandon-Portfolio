@@ -27,18 +27,29 @@ body {
   font-family: var(--font-latin), serif;
 }
 
+.about-text {
+  font-family: 'Orbitron';
+  font-weight: 15;
+  font-size: 35px;
+  line-height: 1.5;
+}
+
 .name-title {
-  font-family: 'Cinzel', serif;
-  font-weight: 500;
+  font-weight: 5;
   font-size: 25px;
   line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
 .title {
-  font-family: 'Josefin Sans', serif;
-  font-weight: 150;
-  font-size: 20px;
+  font-weight: 15;
+  font-size: 15px;
+}
+
+.icon-text {
+  font-family: 'Orbitron';
+  font-weight: 9;
+  font-size: 9px;
 }
 
 .profileImage {
@@ -113,7 +124,11 @@ body {
   animation: profileAppear 0.5s ease-out forwards;
 }
 
-/* Longer duration transitions */
 .duration-1500 {
   transition-duration: 1500ms;
+}
+
+.link {
+  text-decoration: none;
+  color: rgb(95, 223, 95);
 }

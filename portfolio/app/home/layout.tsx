@@ -39,7 +39,7 @@ export default function RootLayout({
     <div>
         {showPreloader && <Preloader />}
         <div className={`content-container ${contentVisible ? 'visible' : 'hidden'}`}>
-          <main className="ml-64 flex-1">
+          <main className="flex-1">
             <Sidebar />
             {children}
           </main>

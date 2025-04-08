@@ -57,34 +57,17 @@ const Sidebar: React.FC = () => {
     },
   ];
 
-  const socialLinks = [
-    { name: 'GitHub', url: 'https://github.com/brandonyee-cs', icon: '/icons/github.png' },
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/brandon-yee-0b335a284/', icon: '/icons/linkedin.png' },
-    { name: 'Medium', url: 'https://medium.com/@brandonyee.nyc5', icon: '/icons/medium.png' },
-  ];
 
   return (
-    <aside className="fixed left-0 top-0 h-full w-64 bg-zinc-800 text-white shadow-lg z-50 flex flex-col">
-      <div className="p-6 flex flex-col items-center profile-image-container">
-        <img
-          src="/images/profile-picture.jpeg" 
-          alt="Profile Picture" 
-          width="150" 
-          height="150"
-          className={`profileImage mb-3 ${profileVisible ? 'opacity-100' : 'opacity-0'}`}
-        />
-        <h1 className="name-title text-gray-200 font-bold">BRANDON YEE</h1>
-        <p className="title text-gray-200 mb-6">ML Researcher @ MIT</p>
-      </div>
-    
-      <nav className="mt-6 flex-grow">
-        <ul>
+    <aside className="fixed left-0 top-2 w-full max-w-screen-lg mx-auto inset-x-0 bg-zinc-800 text-white shadow-lg z-50 py-2 rounded-full">
+      <nav className="flex justify-end items-center">
+        <ul className="flex space-x-3">
           {links.map((item) => (
             <li key={item.name}>              
               <Link 
                 href={item.href}
-                className={`flex items-center px-6 py-3 hover:bg-zinc-700 transition-colors ${
-                  pathname === item.href ? 'bg-zinc-700 border-l-4 border-zinc-200' : ''
+                className={`px-4 py-2 rounded-full hover:bg-zinc-600 transition-colors ${
+                  pathname === item.href ? 'bg-zinc-700 text-white' : 'text-gray-300'
                 }`}
                 onClick={() => {
                   window.dispatchEvent(new CustomEvent('sidebarNavigation'));
@@ -96,29 +79,6 @@ const Sidebar: React.FC = () => {
           ))}
         </ul>
       </nav>
-      
-      <div className="p-6 border-t border-zinc-700">
-        <div className="flex justify-around">
-          {socialLinks.map((link) => (
-            <a 
-              key={link.name}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
-              aria-label={link.name}
-            >
-              <img 
-                src={link.icon} 
-                alt={`${link.name} icon`}
-                width="35"
-                height="25"
-                className="object-contain"
-              />
-            </a>
-          ))}
-        </div>
-      </div>
     </aside>
   )
 }

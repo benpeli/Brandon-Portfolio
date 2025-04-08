@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Tajawal } from "next/font/google";
+import { Orbitron } from "next/font/google";
 import "./globals.css";
 
-const tajawal = Tajawal({ 
+const orbitron = Orbitron({ 
   subsets: ['latin'], 
-  weight: ['700', '800', '900'],
+  weight: ['500', '800', '900'],
   variable: '--font-latin'
 })
 
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${tajawal.className} ${tajawal.variable} antialiased`}
+        className={`${orbitron.className} ${orbitron.variable} antialiased`}
       >
         {children}
       </body>
