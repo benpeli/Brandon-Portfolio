@@ -57,7 +57,7 @@ const Home = () => {
         <section className="py-20 text-gray-200 " id="home">
           <div className="max-w-4xl mx-auto">
             <h1 className="about-text mb-6 text-2xl md:text-3xl lg:text-4xl">
-              Brandon Yee is a developer and entrepreneur who specializes in Machine Learning and Quantitative Research.
+              Brandon Yee is a developer and researcher who specializes in Machine Learning and Quantitative Research.
             </h1>
 
             <Apps />
@@ -65,7 +65,7 @@ const Home = () => {
             <p className="mb-3 text-gray-400 text-xl md:text-xl">
               Brandon is a Machine Learning Researcher at 
               <a href='https://mitsloan.mit.edu/about/why-mit-sloan' target="_blank" rel="noopener" className='link'> MIT Sloan </a> 
-              where in collaboration with a
+              where, in collaboration with a
               <a href='https://mitsloan.mit.edu/programs/phd/damon-petersen?utm_source=chatgpt.com' target="_blank" rel="noopener" className='link'> Sloan PhD Student</a>
               , is researching multi-modal PyTorch frameworks using novel transformer methods. 
 
@@ -75,7 +75,7 @@ const Home = () => {
               <a href='https://www.massgeneral.org/' target="_blank" rel="noopener" className='link'> Massachusetts General Hospital</a> 
               , under an
               <a href='https://www.massgeneral.org/doctors/23428/shaan-khurshid' target="_blank" rel="noopener" className='link'> Assistant Professor of Medicine </a>
-               at Harvard Medical School, working to make significant strides in Material Discovery Research.
+               at Harvard Medical School, is making significant strides in Material Discovery Research.
             </p>
             <div className="grid grid-rows-2 md:grid-cols-4 gap-4 mt-10">
               <div className="text-center">
@@ -83,12 +83,12 @@ const Home = () => {
                 <p>Years Experience</p>
               </div>
               <div className="text-center">
-                <h3 className="text-xl font-bold">10+</h3>
-                <p>Projects</p>
-              </div>
-              <div className="text-center">
                 <h3 className="text-xl font-bold">6+</h3>
                 <p>Publications</p>
+              </div>
+              <div className="text-center">
+                <h3 className="text-xl font-bold">10+</h3>
+                <p>Projects</p>
               </div>
               <div className="text-center">
                 <h3 className="text-xl font-bold">11+</h3>
@@ -134,6 +134,61 @@ const Home = () => {
             </div>
           </div>
         </section>
+
+        {/* Projects Section */}
+  <section className="py-20 px-6" id='projects'>
+    <div className="max-w-6xl mx-auto">
+      <h2 className="text-3xl rounded-lg px-3 py-1 font-bold mb-12 text-center bg-w-sm">My Projects</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Project Card 1 */}
+        <div className="bg-gray-100 rounded-lg overflow-hidden shadow-md">
+          <div className="h-48 bg-gray-200">
+            <a href="https://github.com/brandonyee-cs/RTorch" target="_blank" rel="noopener noreferrer">
+              <img
+                src="/icons/pytorch-logo.png"
+                alt="RTorch Logo"
+                className="object-contain w-full h-full"
+              />
+            </a>
+          </div>
+          <div className="p-6">
+            <h3 className="text-xl font-semibold mb-2 text-gray-500">RTorch</h3>
+            <p className="text-gray-400 mb-4">RTorch is a fast, Rust-based deep learning library with a PyTorch-style Python API, combining Rust's speed, safety, and familiar usability.</p>
+            <div className="flex space-x-2 text-green-500">
+              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">React</span>
+              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">Next.js</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Project Card 2 */}
+        <div className="bg-gray-100 rounded-lg overflow-hidden shadow-md">
+          <div className="h-48 bg-gray-200"></div>
+          <div className="p-6">
+            <h3 className="text-xl font-semibold mb-2 text-gray-500">Project Two</h3>
+            <p className="text-gray-400 mb-4">A brief description of the project and the technologies used.</p>
+            <div className="flex space-x-2 text-green-500">
+              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">TypeScript</span>
+              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">Tailwind</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Project Card 3 */}
+        <div className="bg-gray-100 rounded-lg overflow-hidden shadow-md">
+          <div className="h-48 bg-gray-200"></div>
+          <div className="p-6">
+            <h3 className="text-xl font-semibold mb-2 text-gray-500">Project Three</h3>
+            <p className="text-gray-400 mb-4">A brief description of the project and the technologies used.</p>
+            <div className="flex space-x-2 text-green-500">
+              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">Node.js</span>
+              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">Express</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
       </div>
     </div>
   )
