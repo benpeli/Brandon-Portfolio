@@ -41,22 +41,36 @@ const Sidebar: React.FC = () => {
   const links = [
     {
       name: "Home",
-      href: "/home",
+      href: "#home",
+      section: "home"
     },
     {
       name: "Research",
-      href: "/research",
+      href: "#research",
+      section: "research"
     },
     {
       name: "Projects",
-      href: "/projects",
+      href: "#projects",
+      section: "projects"
     },
     {
       name: "Contact",
-      href: "/contact",
+      href: "#contact",
+      section: "contact"
     },
   ];
 
+  const handleNavigation = (e: React.MouseEvent, item: { href: string, section: string }) => {
+    if (pathname === '/home') {
+      e.preventDefault();
+      const element = document.getElementById(item.section);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    window.dispatchEvent(new CustomEvent('sidebarNavigation'));
+  };
 
   return (
     <aside className="fixed left-0 top-2 w-full max-w-screen-lg mx-auto inset-x-0 bg-zinc-800 text-white shadow-lg z-50 py-2 rounded-full">
@@ -67,11 +81,9 @@ const Sidebar: React.FC = () => {
               <Link 
                 href={item.href}
                 className={`px-4 py-2 rounded-full hover:bg-zinc-600 transition-colors ${
-                  pathname === item.href ? 'bg-zinc-700 text-white' : 'text-gray-300'
+                  pathname === item.href || (pathname === '/home' && item.href.startsWith('#')) ? 'bg-zinc-700 text-white' : 'text-gray-300'
                 }`}
-                onClick={() => {
-                  window.dispatchEvent(new CustomEvent('sidebarNavigation'));
-                }}
+                onClick={(e) => handleNavigation(e, item)}
               >
                 <span>{item.name}</span>
               </Link>
