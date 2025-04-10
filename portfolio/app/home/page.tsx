@@ -63,34 +63,35 @@ const Home = () => {
             <Apps />
 
             <p className="mb-3 text-gray-400 text-xl md:text-xl">
-              Brandon has worked with a variety of teams on a variety of projects, including 
+              Brandon is a Machine Learning Researcher at 
               <a href='https://mitsloan.mit.edu/about/why-mit-sloan' target="_blank" rel="noopener" className='link'> MIT Sloan </a> 
-              where he collaborated with
-              <a href='https://mitsloan.mit.edu/programs/phd/damon-petersen?utm_source=chatgpt.com' target="_blank" rel="noopener" className='link'> PhD researchers </a>
-              on multimodal transformer models.
+              where in collaboration with a
+              <a href='https://mitsloan.mit.edu/programs/phd/damon-petersen?utm_source=chatgpt.com' target="_blank" rel="noopener" className='link'> Sloan PhD Student</a>
+              , is researching multi-modal PyTorch frameworks using novel transformer methods. 
+
             </p>
             <p className="mb-6 text-gray-400 text-xl md:text-xl">
-              He is also curently a Materials Discovery Researcher at 
+              Brandon's work at
               <a href='https://www.massgeneral.org/' target="_blank" rel="noopener" className='link'> Massachusetts General Hospital</a> 
-              , and is working under an 
+              , under an
               <a href='https://www.massgeneral.org/doctors/23428/shaan-khurshid' target="_blank" rel="noopener" className='link'> Assistant Professor of Medicine </a>
-               of Harvard Medical School, working with physics-informed Bayesian graph neural networks.
+               at Harvard Medical School, working to make significant strides in Material Discovery Research.
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+            <div className="grid grid-rows-2 md:grid-cols-4 gap-4 mt-10">
               <div className="text-center">
-                <h3 className="text-xl font-bold">5+</h3>
+                <h3 className="text-xl font-bold">6+</h3>
                 <p>Years Experience</p>
               </div>
               <div className="text-center">
-                <h3 className="text-xl font-bold">20+</h3>
-                <p>Projects Completed</p>
-              </div>
-              <div className="text-center">
                 <h3 className="text-xl font-bold">10+</h3>
-                <p>Happy Clients</p>
+                <p>Projects</p>
               </div>
               <div className="text-center">
-                <h3 className="text-xl font-bold">3+</h3>
+                <h3 className="text-xl font-bold">6+</h3>
+                <p>Publications</p>
+              </div>
+              <div className="text-center">
+                <h3 className="text-xl font-bold">11+</h3>
                 <p>Awards</p>
               </div>
             </div>
