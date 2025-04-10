@@ -147,7 +147,7 @@ const Home = () => {
               <img
                 src="/icons/pytorch-logo.png"
                 alt="RTorch Logo"
-                className="object-contain w-full h-full"
+                className="object-contain w-full h-full text-gray-500"
               />
             </a>
           </div>
@@ -155,34 +155,51 @@ const Home = () => {
             <h3 className="text-xl font-semibold mb-2 text-gray-500">RTorch</h3>
             <p className="text-gray-400 mb-4">RTorch is a fast, Rust-based deep learning library with a PyTorch-style Python API, combining Rust's speed, safety, and familiar usability.</p>
             <div className="flex space-x-2 text-green-500">
-              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">React</span>
-              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">Next.js</span>
+              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">Rust</span>
+              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">Python</span>
             </div>
           </div>
         </div>
 
         {/* Project Card 2 */}
         <div className="bg-gray-100 rounded-lg overflow-hidden shadow-md">
-          <div className="h-48 bg-gray-200"></div>
+          <div className="h-48 bg-gray-200">
+            <a href="https://github.com/brandonyee-cs/Chain-Reaction" target="_blank" rel="noopener noreferrer">
+              <img
+                src="/icons/ChainReaction-logo.png"
+                alt="Chain Reaction Logo"
+                className="object-contain w-full h-full text-gray-500"
+              />
+            </a>
+          </div>
           <div className="p-6">
-            <h3 className="text-xl font-semibold mb-2 text-gray-500">Project Two</h3>
-            <p className="text-gray-400 mb-4">A brief description of the project and the technologies used.</p>
+            <h3 className="text-xl font-semibold mb-2 text-gray-500">Chain Reaction</h3>
+            <p className="text-gray-400 mb-4">Chain Reaction is a full-stack app that analyzes small business supply chains to identify strategic local investment opportunities.</p>
             <div className="flex space-x-2 text-green-500">
-              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">TypeScript</span>
-              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">Tailwind</span>
+              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">JavaScript</span>
+              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">Python</span>
+              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">TeX</span>
             </div>
           </div>
         </div>
 
         {/* Project Card 3 */}
         <div className="bg-gray-100 rounded-lg overflow-hidden shadow-md">
-          <div className="h-48 bg-gray-200"></div>
+          <div className="h-48 bg-gray-200">
+            <a href="https://github.com/brandonyee-cs/Financial-Order-Book" target="_blank" rel="noopener noreferrer">
+              <img
+                src="/icons/OrderBook-logo.png"
+                alt="Order Book Logo"
+                className="object-contain w-full h-full text-gray-500"
+              />
+            </a>
+          </div>
           <div className="p-6">
-            <h3 className="text-xl font-semibold mb-2 text-gray-500">Project Three</h3>
-            <p className="text-gray-400 mb-4">A brief description of the project and the technologies used.</p>
-            <div className="flex space-x-2 text-green-500">
-              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">Node.js</span>
-              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">Express</span>
+            <h3 className="text-xl font-semibold mb-2 text-gray-500">Order Book</h3>
+            <p className="text-gray-400 mb-8">A high-performance trading system with FIX protocol support and configurable runtime parameters.</p>
+            <div className="flex space-x-2 text-green-500 py-2">
+              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">C++</span>
+              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">CMake</span>
             </div>
           </div>
         </div>
