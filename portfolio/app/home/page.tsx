@@ -1,8 +1,16 @@
-import React from 'react'
-import '../globals.css'
-import Apps from '../../components/Apps'
+"use client";
+import React, { useState } from 'react';
+import '../globals.css';
+import Apps from '../../components/Apps';
 
 const Home = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [status, setStatus] = useState('');
 
   const socialLinks = [
     { name: 'GitHub', url: 'https://github.com/brandonyee-cs', icon: '/icons/github.png' },
@@ -10,8 +18,50 @@ const Home = () => {
     { name: 'Medium', url: 'https://medium.com/@brandonyee.nyc', icon: '/icons/medium.png' },
   ];
 
-  return (
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('sending');
 
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        console.error('Server error details:', {
+          status: response.status,
+          statusText: response.statusText,
+          error: data.error,
+          formData: formData
+        });
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error('Client error details:', {
+        error: error instanceof Error ? error.message : error,
+        formData: formData
+      });
+      setStatus('error');
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value
+    });
+  };
+
+  return (
     <div className='flex h-screen bg-zinc-700'>
       {/* Fixed Profile Section */}
       <div className='w-1/4 fixed top-0 left-0 h-screen flex flex-col justify-center items-center border-r border-zinc-600 p-6'>
@@ -206,6 +256,74 @@ const Home = () => {
       </div>
     </div>
   </section>
+
+    {/* Contact Section */}
+    <section className="py-20 px-6" id='contact'>
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-3xl font-bold mb-12 text-center">Get In Touch</h2>
+        <form className="space-y-6" onSubmit={handleSubmit}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label htmlFor="name" className="block text-gray-200 mb-2">Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-md" 
+                required 
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block text-gray-200 mb-2">Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-md" 
+                required 
+              />
+            </div>
+          </div>
+          <div>
+            <label htmlFor="subject" className="block text-gray-200 mb-2">Subject</label>
+            <input 
+              type="text" 
+              id="subject" 
+              value={formData.subject}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 rounded-md" 
+              required 
+            />
+          </div>
+          <div>
+            <label htmlFor="message" className="block text-gray-200 mb-2">Message</label>
+            <textarea 
+              id="message" 
+              rows={5} 
+              value={formData.message}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 rounded-md"
+              required
+            ></textarea>
+          </div>
+          <button 
+            type="submit" 
+            className="bg-zinc-600 text-green-500 px-6 py-3 rounded-md hover:bg-blue-700 transition"
+            disabled={status === 'sending'}
+          >
+            {status === 'sending' ? 'Sending...' : 'Send Message'}
+          </button>
+          {status === 'success' && (
+            <p className="text-green-500">Message sent successfully!</p>
+          )}
+          {status === 'error' && (
+            <p className="text-red-500">Failed to send message. Please try again.</p>
+          )}
+        </form>
+      </div>
+    </section>
       </div>
     </div>
   )
