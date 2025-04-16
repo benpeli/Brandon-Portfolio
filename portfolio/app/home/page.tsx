@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import '../globals.css';
 import Apps from '../../components/Apps';
+// Import the TronAnimation component at the top of your file
+import TronAnimation from '@/components/TronAnimation';
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -66,13 +68,20 @@ const Home = () => {
       {/* Fixed Profile Section */}
       <div className='w-1/4 fixed top-0 left-0 h-screen flex flex-col justify-center items-center border-r border-zinc-600 p-6'>
         <div className="flex flex-col items-center profile-image-container">
-          <img
-            src="/images/profile-picture.jpeg" 
-            alt="Profile Picture" 
-            width="200" 
-            height="200"
-            className="profileImage mb-3"
-          />
+          <div className="relative cursor-pointer">
+            <img
+              src="/images/profile-picture.jpeg" 
+              alt="Profile Picture" 
+              width="200" 
+              height="200"
+              className="profileImage mb-3"
+              onClick={() => {
+                // Trigger the TronAnimation by dispatching a custom event
+                window.dispatchEvent(new CustomEvent('triggerTronAnimation'));
+              }}
+            />
+            <TronAnimation triggerElementId="profile-picture" />
+          </div>
           <h1 className="name-title text-gray-200 font-bold">BRANDON YEE</h1>
           <p className="title text-gray-200">ML Researcher @ MIT</p>
         </div>
@@ -104,7 +113,7 @@ const Home = () => {
       {/* Scrollable Content Section */}
       <div className='w-3/4 ml-[25%] overflow-y-auto h-screen'>
         {/* About Section */}
-        <section className="py-20 text-gray-200 " id="home">
+        <section className="py-30 text-gray-200 " id="home">
           <div className="max-w-4xl mx-auto">
             <h1 className="about-text mb-6 text-2xl md:text-3xl lg:text-4xl">
               Brandon Yee is a developer and researcher who specializes in Machine Learning and Quantitative Research.
@@ -149,7 +158,7 @@ const Home = () => {
         </section>
 
         {/* Research Section */}
-        <section className="py-20 text-gray-200" id="research">
+        <section className="py-30 text-gray-200" id="research">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold mb-6 text-center">Research</h2>
             <div className="space-y-6">
@@ -186,7 +195,7 @@ const Home = () => {
         </section>
 
         {/* Projects Section */}
-  <section className="py-20 px-6" id='projects'>
+  <section className="py-30 px-6" id='projects'>
     <div className="max-w-6xl mx-auto">
       <h2 className="text-3xl rounded-lg px-3 py-1 font-bold mb-12 text-center bg-w-sm">My Projects</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -256,7 +265,7 @@ const Home = () => {
   </section>
 
     {/* Contact Section */}
-    <section className="py-20 px-6" id='contact'>
+    <section className="py-30 px-6" id='contact'>
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold mb-12 text-center">Get In Touch</h2>
         <form className="space-y-6" onSubmit={handleSubmit}>

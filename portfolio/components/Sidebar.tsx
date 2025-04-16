@@ -80,8 +80,8 @@ const Sidebar: React.FC = () => {
             <li key={item.name}>              
               <Link 
                 href={item.href}
-                className={`px-4 py-2 rounded-full hover:bg-zinc-600 transition-colors ${
-                  pathname === item.href || (pathname === '/home' && item.href.startsWith('#')) ? 'bg-zinc-700 text-white' : 'text-gray-300'
+                className={`px-4 py-2 transition-colors ${
+                  pathname === item.href || (pathname === '/home' && item.href.startsWith('#')) ? 'text-gray-400 hover:text-gray-100' : 'text-gray-800 hover:text-white'
                 }`}
                 onClick={(e) => handleNavigation(e, item)}
               >
