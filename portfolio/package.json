@@ -12,7 +12,7 @@
     "@emailjs/browser": "^4.4.1",
     "@emailjs/nodejs": "^5.0.2",
     "emailjs": "^4.0.3",
-    "next": "^15.2.4",
+    "next": "^15.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

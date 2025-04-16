@@ -11,27 +11,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [showPreloader, setShowPreloader] = useState(false);
-  const [contentVisible, setContentVisible] = useState(true);
-  
+  const [contentVisible, setContentVisible] = useState(false); // Start with false
+
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const visitCounter = localStorage.getItem('visitCounter');
-      if (!visitCounter) {
-        setShowPreloader(true);
-        setContentVisible(false);
-        localStorage.setItem('visitCounter', '1');
-        
-        const timer = setTimeout(() => {
-          setShowPreloader(false);
-          setContentVisible(true);
-          document.body.style.overflow = 'auto';
-        }, 4000);
-        
-        return () => clearTimeout(timer);
-      } else {
+    const visitCounter = localStorage.getItem('visitCounter');
+    if (!visitCounter) {
+      setShowPreloader(true);
+      localStorage.setItem('visitCounter', '1');
+      
+      const timer = setTimeout(() => {
+        setShowPreloader(false);
         setContentVisible(true);
         document.body.style.overflow = 'auto';
-      }
+      }, 4000);
+      
+      return () => clearTimeout(timer);
+    } else {
+      setContentVisible(true);
+      document.body.style.overflow = 'auto';
     }
   }, []);
 
