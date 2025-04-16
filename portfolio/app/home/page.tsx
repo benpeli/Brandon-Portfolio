@@ -191,7 +191,7 @@ const Home = () => {
       <h2 className="text-3xl rounded-lg px-3 py-1 font-bold mb-12 text-center bg-w-sm">My Projects</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Project Card 1 */}
-        <div className="bg-gray-100 rounded-lg overflow-hidden shadow-md border-5 border-zinc-500">
+        <div className="bg-gray-200 rounded-lg overflow-hidden shadow-md border-5 border-zinc-500">
           <div className="h-48 bg-gray-200">
             <a href="https://github.com/brandonyee-cs/RTorch" target="_blank" rel="noopener noreferrer">
               <img
@@ -205,14 +205,14 @@ const Home = () => {
             <h3 className="text-xl font-semibold mb-2 text-gray-500">RTorch</h3>
             <p className="text-gray-400 mb-10">RTorch is a Rust-based deep learning library with a PyTorch-style Python API, combining Rust's speed, safety, and familiarity.</p>
             <div className="flex space-x-2 text-green-500">
-              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">Rust</span>
-              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">Python</span>
+              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm">Rust</span>
+              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm">Python</span>
             </div>
           </div>
         </div>
 
         {/* Project Card 2 */}
-        <div className="bg-gray-100 rounded-lg overflow-hidden shadow-md border-5 border-zinc-500">
+        <div className="bg-gray-200 rounded-lg overflow-hidden shadow-md border-5 border-zinc-500">
           <div className="h-48 bg-gray-200">
             <a href="https://github.com/brandonyee-cs/Chain-Reaction" target="_blank" rel="noopener noreferrer">
               <img
@@ -226,13 +226,13 @@ const Home = () => {
             <h3 className="text-xl font-semibold mb-2 text-gray-500">Chain Reaction</h3>
             <p className="text-gray-400 mb-10">Chain Reaction is a full-stack app that analyzes business supply chains to identify strategic local investment opportunities.</p>
             <div className="flex space-x-2 text-green-500">
-              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">JavaScript</span>
-              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">Python</span>            </div>
+              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm">JavaScript</span>
+              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm">Python</span>            </div>
           </div>
         </div>
 
         {/* Project Card 3 */}
-        <div className="bg-gray-100 rounded-lg overflow-hidden shadow-md border-5 border-zinc-500">
+        <div className="bg-gray-200 rounded-lg overflow-hidden shadow-md border-5 border-zinc-500">
           <div className="h-48 bg-gray-200">
             <a href="https://github.com/brandonyee-cs/Financial-Order-Book" target="_blank" rel="noopener noreferrer">
               <img
@@ -244,10 +244,10 @@ const Home = () => {
           </div>
           <div className="p-10">
             <h3 className="text-xl font-semibold mb-2 text-gray-500">Order Book</h3>
-            <p className="text-gray-400 mb-14">A high-performance trading system with FIX protocol support and configurable runtime parameters.</p>
+            <p className="text-gray-400 mb-14">A highly efficient trading system with FIX protocol support and configurable runtime parameters.</p>
             <div className="flex space-x-2 text-green-500 py-2">
-              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">C++</span>
-              <span className="px-3 py-1 bg-gray-200 rounded-full text-sm">CMake</span>
+              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm">C++</span>
+              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm">CMake</span>
             </div>
           </div>
         </div>

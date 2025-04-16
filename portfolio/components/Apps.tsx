@@ -20,7 +20,17 @@ const Apps: React.FC = () => {
     {
       name: 'MatLab',
       logo: '/icons/matlab.png',
-      description: 'MatLab'
+      description: 'MATLAB'
+    },
+    {
+      name: 'Markdown',
+      logo: '/icons/markdown.png',
+      description: 'Markdown'
+    },
+    {
+      name: 'Bash',
+      logo: '/icons/bash.png',
+      description: 'Bash'
     },
     {
       name: 'C++',
