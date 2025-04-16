@@ -10,26 +10,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [showPreloader, setShowPreloader] = useState(false);
-  const [contentVisible, setContentVisible] = useState(false); // Start with false
+  const [showPreloader, setShowPreloader] = useState(true); 
+  const [contentVisible, setContentVisible] = useState(false);
 
   useEffect(() => {
-    const visitCounter = localStorage.getItem('visitCounter');
-    if (!visitCounter) {
-      setShowPreloader(true);
-      localStorage.setItem('visitCounter', '1');
-      
-      const timer = setTimeout(() => {
-        setShowPreloader(false);
-        setContentVisible(true);
-        document.body.style.overflow = 'auto';
-      }, 4000);
-      
-      return () => clearTimeout(timer);
-    } else {
+    setShowPreloader(true);
+    
+    const timer = setTimeout(() => {
+      setShowPreloader(false);
       setContentVisible(true);
       document.body.style.overflow = 'auto';
-    }
+    }, 4000);
+    
+    return () => clearTimeout(timer);
   }, []);
 
   return (
