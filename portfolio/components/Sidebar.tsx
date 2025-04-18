@@ -62,12 +62,21 @@ const Sidebar: React.FC = () => {
   ];
 
   const handleNavigation = (e: React.MouseEvent, item: { href: string, section: string }) => {
-    if (pathname === '/home') {
-      e.preventDefault();
-      const element = document.getElementById(item.section);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+    e.preventDefault();
+    const element = document.getElementById(item.section);
+    if (element) {
+      const offset = 80;
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+      // Adjust final scroll position to account for the header offset
+      setTimeout(() => {
+        window.scrollTo({
+          top: window.scrollY - offset,
+          behavior: 'smooth'
+        });
+      }, 0);
     }
     window.dispatchEvent(new CustomEvent('sidebarNavigation'));
   };
@@ -81,7 +90,7 @@ const Sidebar: React.FC = () => {
               <Link 
                 href={item.href}
                 className={`px-4 py-2 transition-colors ${
-                  pathname === item.href || (pathname === '/home' && item.href.startsWith('#')) ? 'text-gray-400 hover:text-gray-100' : 'text-gray-800 hover:text-white'
+                  pathname === item.href || (pathname === '/home' && item.href.startsWith('#')) ? 'text-gray-400 hover:text-gray-100' : 'text-gray-400 hover:text-gray-100'
                 }`}
                 onClick={(e) => handleNavigation(e, item)}
               >

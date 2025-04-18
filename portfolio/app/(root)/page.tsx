@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import '../globals.css';
 import Apps from '../../components/Apps';
-// Import the TronAnimation component at the top of your file
 import TronAnimation from '@/components/TronAnimation';
 
 const Home = () => {
