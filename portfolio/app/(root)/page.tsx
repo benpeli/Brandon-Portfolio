@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../globals.css';
 import Apps from '../../components/Apps';
 import TronAnimation from '@/components/TronAnimation';
@@ -62,6 +62,49 @@ const Home = () => {
     });
   };
 
+  useEffect(() => {
+    const scrollableDiv = document.querySelector('.scrollable-content');
+    
+    const waitForScroll = (targetPosition: number) => {
+      return new Promise<void>((resolve) => {
+        const checkScroll = () => {
+          if (scrollableDiv && scrollableDiv.scrollTop > targetPosition) {
+            console.log('true', scrollableDiv.scrollTop)
+
+            const researchElements = document.querySelectorAll('#research .transl');
+            researchElements.forEach((element, index) => {
+              setTimeout(() => {
+                element.classList.remove('hidden');
+                element.classList.add('show', 'fade-in');
+              }, index * 200);
+            });
+          } else {
+            requestAnimationFrame(checkScroll);
+          }
+        };
+        checkScroll();
+      });
+    };
+
+    const triggerAnimations = async () => {
+      console.log('Waiting for scroll position...');
+      await waitForScroll(1); // Adjust this value based on when you want the animation to trigger
+    };
+
+    if (scrollableDiv) {
+      triggerAnimations();
+    }
+
+    return () => {
+      const researchElements = document.querySelectorAll('#research .transl');
+      researchElements.forEach(element => {
+        element.classList.remove('show', 'fade-in');
+        element.classList.add('hidden');
+      });
+    };
+  }, []); // Empty dependency array means this runs once on mount
+
+
   return (
     <div className='flex h-screen bg-zinc-700'>
       {/* Fixed Profile Section */}
@@ -110,10 +153,10 @@ const Home = () => {
       </div>
 
       {/* Scrollable Content Section */}
-      <div className='w-3/4 ml-[25%] overflow-y-auto h-screen'>
+      <div className='w-full ml-[25%] overflow-y-auto h-screen scrollable-content'>
         {/* About Section */}
         <section className="py-30 text-gray-200 " id="home">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <h1 className="about-text mb-6 text-2xl md:text-3xl lg:text-4xl">
               Brandon Yee is a developer and researcher who specializes in Machine Learning and Quantitative Research.
             </h1>
@@ -158,36 +201,33 @@ const Home = () => {
 
         {/* Research Section */}
         <section className="py-30 text-gray-200" id="research">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6 text-center">Research</h2>
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl font-bold mb-10 text-center">Research</h2>
             <div className="space-y-6">
-              <p className="mb-3 text-gray-200 text-xl md:text-xl">
-                <strong>Physics-Informed Uncertainty Quantification for Graph Neural Networks in Materials Discovery.</strong> <em className="text-gray-400">Brandon Yee, Lucas Wang, Mihir Tekal, Shaan Khurshid, Shakeel Abdulkareem [April 2025 - Now].</em>
+              <p className="transl hidden mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "1"} as React.CSSProperties}>
+                <strong>Physics-Informed Uncertainty Quantification...</strong>
+                <em className="text-gray-400">Brandon Yee, Lucas Wang, Mihir Tekal, Shaan Khurshid, Shakeel Abdulkareem [April 2025 - Now].</em>
               </p>
               
-              <p className="mb-3 text-gray-200 text-xl md:text-xl">
-                <strong>TLR4-Bind: Integrating Modeling and ML for Inhibitor Affinity Prediction.</strong> <em className="text-gray-400">Brandon Yee, Kevin Bedoya, Kripamoye Biswas, Max Rutowski, Wilson Collins [March - Now].</em>
+              {/* Add style prop to all research items */}
+              <p className="transl hidden mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "2"} as React.CSSProperties}>
+                <strong>TLR4-Bind: Integrating Modeling...</strong>
+                <em className="text-gray-400">Brandon Yee, Kevin Bedoya, Kripamoye Biswas, Max Rutowski, Wilson Collins [March - Now].</em>
               </p>
               
-              <p className="mb-3 text-gray-200 text-xl md:text-xl">
-                <strong>The Cash Flow Duration Effect: Exploitable Market Inefficiencies Around Information-Rich Events.</strong> <em className="text-gray-400">Brandon Yee, Damon Petersen, Micheal D'Angelo, Piotr Kurek, Sky Ng [November 2024 - Now].</em>
+              <p className="transl hidden mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "3"} as React.CSSProperties}>
+                <strong>Literature Review: Credit Risk Assessment...</strong>
+                <em className="text-gray-400">Brandon Yee [April 2025].</em>
               </p>
               
-              <p className="mb-3 text-gray-200 text-xl md:text-xl">
-                <strong>Literature Review: Credit Risk Assessment in Private Markets.</strong> <em className="text-gray-400">Brandon Yee [April 2025]. Preprint:</em>
+              <p className="transl hidden mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "4"} as React.CSSProperties}>
+                <strong>Multi-Modal Anomaly Detection...</strong>
+                <em className="text-gray-400">Brandon Yee, Mark Wilkinson [March 2025].</em>
               </p>
               
-              <p className="mb-3 text-gray-200 text-xl md:text-xl">
-                <strong>Multi-Modal Anomaly Detection for Enterprise Security.</strong> <em className="text-gray-400">Brandon Yee, Mark Wilkinson [March 2025]. Preprint:</em>
-              </p>
-              
-              <p className="mb-3 text-gray-200 text-xl md:text-xl">
-                <strong>Mathematical Foundations of Option Pricing Models: A Comparative Analysis.</strong> <em className="text-gray-400">Brandon Yee [February 2025]. <a href="https://assets-eu.researchsquare.com/files/rs-6297750/v1_covered_0907cb48-807b-46a6-b439-84e0bf74ee86.pdf?c=1743660407" target="_blank" rel="noopener" className="link inline-flex items-center">
-                  <span>Download Paper</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                  </svg>
-                </a></em>
+              <p className="transl hidden mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "5"} as React.CSSProperties}>
+                <strong>Mathematical Foundations...</strong>
+                <em className="text-gray-400">Brandon Yee [February 2025].</em>
               </p>
             </div>
           </div>
