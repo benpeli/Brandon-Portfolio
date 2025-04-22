@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import '../globals.css';
 import Apps from '../../components/Apps';
-import TronAnimation from '@/components/TronAnimation';
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -88,7 +87,7 @@ const Home = () => {
 
     const triggerAnimations = async () => {
       console.log('Waiting for scroll position...');
-      await waitForScroll(1); // Adjust this value based on when you want the animation to trigger
+      await waitForScroll(700); // Adjust this value based on when you want the animation to trigger
     };
 
     if (scrollableDiv) {
@@ -102,7 +101,31 @@ const Home = () => {
         element.classList.add('hidden');
       });
     };
-  }, []); // Empty dependency array means this runs once on mount
+  }, []); 
+
+  useEffect(() => {
+    const profileImage = document.querySelector('.profileImage');
+    
+    function handleClick(this: HTMLElement) {
+      console.log('Profile image clicked');
+      this.classList.add('spinning');
+      console.log(this.classList);
+      
+      setTimeout(() => {
+        this.classList.remove('spinning');
+      }, 500);
+    }
+    
+    if (profileImage) {
+      profileImage.addEventListener('click', handleClick);
+    }
+    
+    return () => {
+      if (profileImage) {
+        profileImage.removeEventListener('click', handleClick);
+      }
+    };
+  }, []);
 
 
   return (
@@ -116,13 +139,12 @@ const Home = () => {
               alt="Profile Picture" 
               width="200" 
               height="200"
-              className="profileImage mb-3"
+              className="profileImage"
               onClick={() => {
                 // Trigger the TronAnimation by dispatching a custom event
                 window.dispatchEvent(new CustomEvent('triggerTronAnimation'));
               }}
             />
-            <TronAnimation triggerElementId="profile-picture" />
           </div>
           <h1 className="name-title text-gray-200 font-bold">BRANDON YEE</h1>
           <p className="title text-gray-200">ML Researcher @ MIT</p>
@@ -205,29 +227,34 @@ const Home = () => {
             <h2 className="text-3xl font-bold mb-10 text-center">Research</h2>
             <div className="space-y-6">
               <p className="transl hidden mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "1"} as React.CSSProperties}>
-                <strong>Physics-Informed Uncertainty Quantification...</strong>
-                <em className="text-gray-400">Brandon Yee, Lucas Wang, Mihir Tekal, Shaan Khurshid, Shakeel Abdulkareem [April 2025 - Now].</em>
+                <strong>Physics-Informed Uncertainty Quantification for Graph Neural Networks in Materials Discovery.</strong>
+                <em className="text-gray-400"> Brandon Yee, Lucas Wang, Mihir Tekal, Shaan Khurshid, Shakeel Abdulkareem [April 2025 - Now].</em>
               </p>
               
               {/* Add style prop to all research items */}
               <p className="transl hidden mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "2"} as React.CSSProperties}>
-                <strong>TLR4-Bind: Integrating Modeling...</strong>
-                <em className="text-gray-400">Brandon Yee, Kevin Bedoya, Kripamoye Biswas, Max Rutowski, Wilson Collins [March - Now].</em>
+                <strong>TLR4-Bind: Integrating Modeling and ML for Inhibitor Affinity Prediction.</strong>
+                <em className="text-gray-400"> Brandon Yee, Kevin Bedoya, Kripamoye Biswas, Max Rutowski, Wilson Collins [March - Now].</em>
               </p>
-              
+
               <p className="transl hidden mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "3"} as React.CSSProperties}>
-                <strong>Literature Review: Credit Risk Assessment...</strong>
-                <em className="text-gray-400">Brandon Yee [April 2025].</em>
+                <strong>The Cash Flow Duration Effect: Exploitable Market Inefficiencies Around Information-Rich Events.</strong>
+                <em className="text-gray-400"> Brandon Yee, Damon Petersen, Micheal D'Angelo, Piotr Kurek, Sky Ng [November 2024 - Now].</em>
               </p>
               
               <p className="transl hidden mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "4"} as React.CSSProperties}>
-                <strong>Multi-Modal Anomaly Detection...</strong>
-                <em className="text-gray-400">Brandon Yee, Mark Wilkinson [March 2025].</em>
+                <strong>Literature Review: Credit Risk Assessment in Private Markets.</strong>
+                <em className="text-gray-400"> Brandon Yee [April 2025].</em>
               </p>
               
               <p className="transl hidden mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "5"} as React.CSSProperties}>
-                <strong>Mathematical Foundations...</strong>
-                <em className="text-gray-400">Brandon Yee [February 2025].</em>
+                <strong>Multi-Modal Anomaly Detection for Enterprise Security.</strong>
+                <em className="text-gray-400"> Brandon Yee, Mark Wilkinson [March 2025].</em>
+              </p>
+              
+              <p className="transl hidden mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "6"} as React.CSSProperties}>
+                <strong>Mathematical Foundations of Option Pricing Models: A Comparative Analysis.</strong>
+                <em className="text-gray-400"> Brandon Yee [February 2025].</em>
               </p>
             </div>
           </div>
