@@ -62,46 +62,35 @@ const Home = () => {
   };
 
   useEffect(() => {
-    const scrollableDiv = document.querySelector('.scrollable-content');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('txt-animation');
+          entry.target.classList.remove('txt-animation-reverse');
+        } 
+        else {
+          entry.target.classList.remove('txt-animation');
+          entry.target.classList.add('txt-animation-reverse');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px' 
+    });
     
-    const waitForScroll = (targetPosition: number) => {
-      return new Promise<void>((resolve) => {
-        const checkScroll = () => {
-          if (scrollableDiv && scrollableDiv.scrollTop > targetPosition) {
-            console.log('true', scrollableDiv.scrollTop)
-
-            const researchElements = document.querySelectorAll('#research .transl');
-            researchElements.forEach((element, index) => {
-              setTimeout(() => {
-                element.classList.remove('hidden');
-                element.classList.add('show', 'fade-in');
-              }, index * 200);
-            });
-          } else {
-            requestAnimationFrame(checkScroll);
-          }
-        };
-        checkScroll();
-      });
-    };
-
-    const triggerAnimations = async () => {
-      console.log('Waiting for scroll position...');
-      await waitForScroll(700); // Adjust this value based on when you want the animation to trigger
-    };
-
-    if (scrollableDiv) {
-      triggerAnimations();
-    }
-
+    const researchItems = document.querySelectorAll('#research p');
+    researchItems.forEach((el, index) => {
+      el.classList.add('txt');
+      (el as HTMLElement).style.setProperty('--order', (index + 1).toString());
+      observer.observe(el);
+    });
+    
     return () => {
-      const researchElements = document.querySelectorAll('#research .transl');
-      researchElements.forEach(element => {
-        element.classList.remove('show', 'fade-in');
-        element.classList.add('hidden');
+      researchItems.forEach(el => {
+        observer.unobserve(el);
       });
     };
-  }, []); 
+  }, []);
 
   useEffect(() => {
     const profileImage = document.querySelector('.profileImage');
@@ -222,37 +211,37 @@ const Home = () => {
         </section>
 
         {/* Research Section */}
-        <section className="py-30 text-gray-200" id="research">
+        <section className="py-30 text-gray-200" id='researchSec'>
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold mb-10 text-center">Research</h2>
-            <div className="space-y-6">
-              <p className="transl hidden mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "1"} as React.CSSProperties}>
+            <div className="space-y-6"  id="research">
+              <p className="mb-7 text-gray-200 text-xl md:text-xl txt" style={{"--order": "1"} as React.CSSProperties}>
                 <strong>Physics-Informed Uncertainty Quantification for Graph Neural Networks in Materials Discovery.</strong>
                 <em className="text-gray-400"> Brandon Yee, Lucas Wang, Mihir Tekal, Shaan Khurshid, Shakeel Abdulkareem [April 2025 - Now].</em>
               </p>
               
-              {/* Add style prop to all research items */}
-              <p className="transl hidden mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "2"} as React.CSSProperties}>
+              {/* Other research items remain the same but will be targeted by the JS */}
+              <p className="mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "2"} as React.CSSProperties}>
                 <strong>TLR4-Bind: Integrating Modeling and ML for Inhibitor Affinity Prediction.</strong>
                 <em className="text-gray-400"> Brandon Yee, Kevin Bedoya, Kripamoye Biswas, Max Rutowski, Wilson Collins [March - Now].</em>
               </p>
 
-              <p className="transl hidden mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "3"} as React.CSSProperties}>
+              <p className="mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "3"} as React.CSSProperties}>
                 <strong>The Cash Flow Duration Effect: Exploitable Market Inefficiencies Around Information-Rich Events.</strong>
                 <em className="text-gray-400"> Brandon Yee, Damon Petersen, Micheal D'Angelo, Piotr Kurek, Sky Ng [November 2024 - Now].</em>
               </p>
               
-              <p className="transl hidden mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "4"} as React.CSSProperties}>
+              <p className="mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "4"} as React.CSSProperties}>
                 <strong>Literature Review: Credit Risk Assessment in Private Markets.</strong>
                 <em className="text-gray-400"> Brandon Yee [April 2025].</em>
               </p>
               
-              <p className="transl hidden mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "5"} as React.CSSProperties}>
+              <p className="mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "5"} as React.CSSProperties}>
                 <strong>Multi-Modal Anomaly Detection for Enterprise Security.</strong>
                 <em className="text-gray-400"> Brandon Yee, Mark Wilkinson [March 2025].</em>
               </p>
               
-              <p className="transl hidden mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "6"} as React.CSSProperties}>
+              <p className="mb-7 text-gray-200 text-xl md:text-xl" style={{"--order": "6"} as React.CSSProperties}>
                 <strong>Mathematical Foundations of Option Pricing Models: A Comparative Analysis.</strong>
                 <em className="text-gray-400"> Brandon Yee [February 2025].</em>
               </p>

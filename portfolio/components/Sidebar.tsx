@@ -46,8 +46,8 @@ const Sidebar: React.FC = () => {
     },
     {
       name: "Research",
-      href: "#research",
-      section: "research"
+      href: "#researchSec",
+      section: "researchSec"
     },
     {
       name: "Projects",
