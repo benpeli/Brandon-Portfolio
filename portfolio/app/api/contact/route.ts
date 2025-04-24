@@ -6,8 +6,8 @@ export async function POST(request: Request) {
     const { name, email, subject, message } = await request.json();
 
     const client = new SMTPClient({
-      user: 'benjaminpellegrini@gmail.com',
-      password: 'yjav mmfo mexu qpmd', 
+      user: 'brandonyee.nyc@gmail.com',
+      password: 'kfsj uhnc orqj rvcx', 
       host: 'smtp.gmail.com',
       ssl: true,
     });
@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     try {
       const result = await client.sendAsync({
         from: `"${name}" <${email}>`,
-        to: 'benjaminpellegrini@gmail.com',
+        to: 'brandonyee.nyc@gmail.com',
         subject: `Portfolio Contact: ${subject}`,
         text: `
 Name: ${name}
