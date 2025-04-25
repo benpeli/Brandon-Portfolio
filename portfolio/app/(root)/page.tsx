@@ -11,31 +11,70 @@ const Home = () => {
     message: ''
   });
   const [status, setStatus] = useState('');
+  const [timeLeft, setTimeLeft] = useState(0);
+  const [timer, setTimer] = useState<NodeJS.Timeout | null>(null);
 
-  const socialLinks = [
+  interface SocialLink {
+    name: string;
+    url: string;
+    icon: string;
+  }
+
+  const socialLinks: SocialLink[] = [
     { name: 'GitHub', url: 'https://github.com/brandonyee-cs', icon: '/icons/github.png' },
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/brandon-yee-0b335a284/', icon: '/icons/linkedin.png' },
     { name: 'Medium', url: 'https://medium.com/@brandonyee.nyc', icon: '/icons/medium.png' },
   ];
 
+  const updateCountdown = () => {
+    setTimeLeft(prev => {
+      if (prev <= 1) {
+        setStatus('');
+        if (timer) clearInterval(timer);
+        return 0;
+      }
+      return prev - 1;
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Check if cooldown is active
+    if (timeLeft > 0) {
+      return;
+    }
+    
     setStatus('sending');
 
     try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 300000);
+      
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
+        signal: controller.signal 
       });
+      
+      clearTimeout(timeoutId);
 
       const data = await response.json();
 
       if (response.ok) {
         setStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
+        
+        // Set 5-minute cooldown (300 seconds)
+        setTimeLeft(300);
+        
+        // Start countdown timer
+        const intervalId = setInterval(updateCountdown, 1000);
+        setTimer(intervalId);
+        
       } else {
         console.error('Server error details:', {
           status: response.status,
@@ -372,12 +411,16 @@ const Home = () => {
           </div>
           <button 
             type="submit" 
-            className="bg-zinc-600 text-green-500 px-6 py-3 rounded-md hover:bg-blue-700 transition"
-            disabled={status === 'sending'}
+            className="bg-zinc-600 text-green-500 px-6 py-3 rounded-md hover:bg-gray-500 transition"
+            disabled={status === 'sending' || timeLeft > 0}
           >
-            {status === 'sending' ? 'Sending...' : 'Send Message'}
+            {status === 'sending' ? 'Sending...' : 
+             timeLeft > 0 ? `Wait` : 'Send Message'}
           </button>
-          {status === 'success' && (
+          {status === 'success' && timeLeft > 0 && (
+            <p className="text-green-500">Message sent successfully! You can send another message in {timeLeft} seconds.</p>
+          )}
+          {status === 'success' && timeLeft === 0 && (
             <p className="text-green-500">Message sent successfully!</p>
           )}
           {status === 'error' && (
