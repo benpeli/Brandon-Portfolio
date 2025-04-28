@@ -82,8 +82,8 @@ const Sidebar: React.FC = () => {
   };
 
   return (
-    <aside className="fixed left-0 top-2 w-full max-w-screen-lg mx-auto inset-x-0 bg-zinc-800 text-white shadow-lg z-50 py-2 rounded-full">
-      <nav className="flex justify-end items-center">
+    <aside className="fixed top-2 left-[32.5%] right-0 w-[60%] bg-zinc-800 text-white shadow-lg z-50 py-2 rounded-full">
+      <nav className="flex justify-center items-center">
         <ul className="flex space-x-3">
           {links.map((item) => (
             <li key={item.name}>              

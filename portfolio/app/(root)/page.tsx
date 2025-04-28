@@ -68,10 +68,8 @@ const Home = () => {
         setStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
         
-        // Set 5-minute cooldown (300 seconds)
         setTimeLeft(300);
         
-        // Start countdown timer
         const intervalId = setInterval(updateCountdown, 1000);
         setTimer(intervalId);
         
@@ -169,8 +167,6 @@ const Home = () => {
               height="200"
               className="profileImage"
               onClick={() => {
-                // Trigger the TronAnimation by dispatching a custom event
-                window.dispatchEvent(new CustomEvent('triggerTronAnimation'));
               }}
             />
           </div>
@@ -205,10 +201,10 @@ const Home = () => {
       {/* Scrollable Content Section */}
       <div className='w-full ml-[25%] overflow-y-auto h-screen scrollable-content'>
         {/* About Section */}
-        <section className="py-30 text-gray-200 " id="home">
-          <div className="max-w-5xl mx-auto">
-            <h1 className="about-text mb-6 text-2xl md:text-3xl lg:text-4xl">
-              Brandon Yee is a developer and researcher who specializes in Machine Learning and Quantitative Research.
+        <section className="py-30 px-6 text-gray-200" id="home">
+          <div className="max-w-4xl mx-auto text-pretty">
+            <h1 className="about-text mb-6 text-2xl md:text-3xl lg:text-4xl mx-auto text-left antialiased">
+              Brandon Yee <a className='text-white/70'>is a developer and researcher who specializes in </a> Machine Learning <a className='text-white/70'>and</a> Quantitative Research.
             </h1>
 
             <Apps />
@@ -219,8 +215,9 @@ const Home = () => {
               where, in collaboration with a
               <a href='https://mitsloan.mit.edu/programs/phd/damon-petersen?utm_source=chatgpt.com' target="_blank" rel="noopener" className='link'> Sloan PhD Student</a>
               , is researching multi-modal PyTorch frameworks using novel transformer methods. 
-
             </p>
+            
+            {/* Rest of the content remains the same */}
             <p className="mb-6 text-gray-400 text-xl md:text-xl">
               Brandon's work at
               <a href='https://www.massgeneral.org/' target="_blank" rel="noopener" className='link'> Massachusetts General Hospital</a> 
@@ -294,7 +291,7 @@ const Home = () => {
       <h2 className="text-3xl rounded-lg px-3 py-1 font-bold mb-12 text-center bg-w-sm">My Projects</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Project Card 1 */}
-        <div className="bg-gray-200 rounded-lg overflow-hidden shadow-md border-5 border-zinc-500">
+        <div className="bg-zinc-700 rounded-lg overflow-hidden shadow-md border-5 border-zinc-500">
           <div className="h-48 bg-gray-200">
             <a href="https://github.com/brandonyee-cs/RTorch" target="_blank" rel="noopener noreferrer">
               <img
@@ -305,17 +302,17 @@ const Home = () => {
             </a>
           </div>
           <div className="p-10">
-            <h3 className="text-xl font-semibold mb-2 text-gray-500">RTorch</h3>
-            <p className="text-gray-400 mb-10">RTorch is a Rust-based deep learning library with a PyTorch-style Python API, combining Rust's speed, safety, and familiarity.</p>
+          <h3 className="text-xl font-semibold mb-2 bg-zinc-600 text-center rounded-full text-green-500 inline-block px-4">RTorch</h3>
+            <p className="text-white mb-10">RTorch is a Rust-based deep learning library with a PyTorch-style Python API, combining Rust's speed, safety, and familiarity.</p>
             <div className="flex space-x-2 text-green-500">
-              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm">Rust</span>
-              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm">Python</span>
+              <span className="px-3 py-1 bg-zinc-600 rounded-full">Rust</span>
+              <span className="px-3 py-1 bg-zinc-600 rounded-full">Python</span>
             </div>
           </div>
         </div>
 
         {/* Project Card 2 */}
-        <div className="bg-gray-200 rounded-lg overflow-hidden shadow-md border-5 border-zinc-500">
+        <div className="bg-zinc-700 rounded-lg overflow-hidden shadow-md border-5 border-zinc-500">
           <div className="h-48 bg-gray-200">
             <a href="https://github.com/brandonyee-cs/Chain-Reaction" target="_blank" rel="noopener noreferrer">
               <img
@@ -326,16 +323,16 @@ const Home = () => {
             </a>
           </div>
           <div className="p-10">
-            <h3 className="text-xl font-semibold mb-2 text-gray-500">Chain Reaction</h3>
-            <p className="text-gray-400 mb-10">Chain Reaction is a full-stack app that analyzes business supply chains to identify strategic local investment opportunities.</p>
+          <h3 className="text-xl font-semibold mb-2 bg-zinc-600 text-center rounded-full text-green-500 inline-block px-4">Chain Reaction</h3>
+            <p className="text-white mb-10">Chain Reaction is a full-stack app that analyzes business supply chains to identify strategic local investment opportunities.</p>
             <div className="flex space-x-2 text-green-500">
-              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm">JavaScript</span>
-              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm">Python</span>            </div>
+              <span className="px-3 py-1 bg-zinc-600 rounded-full">JavaScript</span>
+              <span className="px-3 py-1 bg-zinc-600 rounded-full">Python</span>            </div>
           </div>
         </div>
 
         {/* Project Card 3 */}
-        <div className="bg-gray-200 rounded-lg overflow-hidden shadow-md border-5 border-zinc-500">
+        <div className="bg-zinc-700 rounded-lg overflow-hidden shadow-md border-5 border-zinc-500">
           <div className="h-48 bg-gray-200">
             <a href="https://github.com/brandonyee-cs/Financial-Order-Book" target="_blank" rel="noopener noreferrer">
               <img
@@ -346,11 +343,11 @@ const Home = () => {
             </a>
           </div>
           <div className="p-10">
-            <h3 className="text-xl font-semibold mb-2 text-gray-500">Order Book</h3>
-            <p className="text-gray-400 mb-14">A highly efficient trading system with FIX protocol support and configurable runtime parameters.</p>
+            <h3 className="text-xl font-semibold mb-2 bg-zinc-600 text-center rounded-full text-green-500 inline-block px-4">Order Book</h3>
+            <p className="text-white mb-14">A highly efficient trading system with FIX protocol support and configurable runtime parameters.</p>
             <div className="flex space-x-2 text-green-500 py-2">
-              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm">C++</span>
-              <span className="px-3 py-1 bg-gray-100 rounded-full text-sm">CMake</span>
+              <span className="px-3 py-1 bg-zinc-600 rounded-full">C++</span>
+              <span className="px-3 py-1 bg-zinc-600 rounded-full">CMake</span>
             </div>
           </div>
         </div>
